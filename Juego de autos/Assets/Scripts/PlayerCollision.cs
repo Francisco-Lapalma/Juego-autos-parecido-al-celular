@@ -11,7 +11,8 @@ public class PlayerCollision : MonoBehaviour
         Debug.Log(name + " COLISION CON " + other.gameObject.name);
         if (other.gameObject.CompareTag("Enemy"))
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene(sceneBuildIndex: 0);
+            GameManager.instance.score = 0;
         }
         /*
         if (other.gameObject.CompareTag("Ground"))
