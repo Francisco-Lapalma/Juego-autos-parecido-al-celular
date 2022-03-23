@@ -8,5 +8,5 @@ public class PlayerData : ScriptableObject
 {
     [SerializeField] public float carSpeed = 2f;
     [SerializeField] public float gyroSpeed = 2f;
-    [SerializeField] public float raycastRange = 15f;
+
 }

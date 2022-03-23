@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayCastOrigin: {fileID: 5588170615812650421}
-  enemyStats: {fileID: 11400000, guid: 094e9eff7266b414b9ab4e1f8e40cef2, type: 2}
+  enemyStats: {fileID: 11400000, guid: 451ee2e41deb28f438318fa82016cf1a, type: 2}
 --- !u!1 &5588170615812650421
 GameObject:
   m_ObjectHideFlags: 0

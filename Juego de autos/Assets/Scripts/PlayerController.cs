@@ -7,12 +7,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject rayCastOrigin;
     //[SerializeField] public float carSpeed = 2f;
     //[SerializeField] public float gyroSpeed = 2f;
-    //[SerializeField] public float raycastRange = 15f;
+    private float raycastRange = 15f;
     bool oneScore = false;
+    bool hitOnce = false;
     [SerializeField] protected PlayerData playerStats;
+
+
+
+    private void Awake()
+    {
+        PlayerCollision.OnDeath += GameOverBehaviour;
+    }
     void Start()
     {
-        
+        //FindObjectOfType<PlayerCollision>().OnDeath += GameOverBehaviour;
     }
 
     void Update()
@@ -41,46 +49,64 @@ public class PlayerController : MonoBehaviour
 
     private void DetectEnemy()
     {
-        
-        RaycastHit hit;
-        if (Physics.Raycast(rayCastOrigin.transform.position, Vector3.left, out hit, playerStats.raycastRange))
-        {
-            if (GameObject.FindWithTag("Enemy"))
-            {
-                
-                if (oneScore == false)
-                {
-                    GameManager.instance.score++;
-                    oneScore = true;
-                    Debug.Log("Sumo punto");
-                }
-                
-            }
-            else if (oneScore == true)
-            {
-                oneScore = false;
-                Debug.Log("No sumo punto");
-            }
-        }
-        
 
-        if (Physics.Raycast(rayCastOrigin.transform.position, Vector3.right, out hit, playerStats.raycastRange))
+
+        RaycastHit hit;
+
+
+        if (Physics.Raycast(rayCastOrigin.transform.position, rayCastOrigin.transform.TransformDirection(Vector3.right), out hit, raycastRange))
         {
-            if (GameObject.FindWithTag("Enemy"))
+            if (hit.collider.tag == "Enemy" && !hitOnce)
             {
-                if (oneScore == false)
-                {
-                    GameManager.instance.score++;
-                    oneScore = true;
-                    Debug.Log("Sumo punto");
-                }
+
+                /////// detecta si el enemy fue tocado por el ray   cast
+                Debug.Log("HIT!!!!!");
+                ////// cambia el boolean a true asi el if no se ejecuta 
+                hitOnce = true;
+                //////// suma un punto
+                GameManager.instance.score += 1;
+                Debug.Log("Sumo punto desde raycast right");
+
             }
-            else if (oneScore == true)
-            {
-                oneScore = false;
-                Debug.Log("No sumo punto");
-            }
+
         }
-        
+        ///// si no toca ningun auto, el boolean cambia a falso 
+        else hitOnce = false;
+
+        if (Physics.Raycast(rayCastOrigin.transform.position, rayCastOrigin.transform.TransformDirection(Vector3.left), out hit, raycastRange))
+        {
+            if (hit.collider.tag == "Enemy" && !hitOnce)
+            {
+
+                /////// detecta si el enemy fue tocado por el ray   cast
+                Debug.Log("HIT!!!!!");
+                ////// cambia el boolean a true asi el if no se ejecuta 
+                hitOnce = true;
+                //////// suma un punto
+                GameManager.instance.score += 1;
+                Debug.Log("Sumo punto desde raycast left");
+
+            }
+
+        }
+        ///// si no toca ningun auto, el boolean cambia a falso 
+        else hitOnce = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(rayCastOrigin.transform.position, rayCastOrigin.transform.TransformDirection(Vector3.right) * raycastRange);
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(rayCastOrigin.transform.position, rayCastOrigin.transform.TransformDirection(Vector3.left) * raycastRange);
+    }
+
+    private void GameOverBehaviour()
+    {
+        Debug.Log("Yo PlayerController recibi la notificacion hago mi parte y por cierto FFFFFFF");
+        GetComponent<Rigidbody>().isKinematic = true;
+        this.enabled = false;
+        //GetComponent<Rigidbody>().isKinematic = true;
     }
 }

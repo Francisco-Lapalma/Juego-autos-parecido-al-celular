@@ -75,8 +75,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5186622, y: 2.2206616, z: 3.3085766}
-  m_Center: {x: 0.029055446, y: 1.0624931, z: -0.007203102}
+  m_Size: {x: 1.5186622, y: 1.698384, z: 3.3085766}
+  m_Center: {x: 0.029055476, y: 0.8013543, z: -0.007203102}
 --- !u!114 &7046789104006777249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayCastOrigin: {fileID: 3216477911213709590}
-  enemyStats: {fileID: 11400000, guid: 094e9eff7266b414b9ab4e1f8e40cef2, type: 2}
+  enemyStats: {fileID: 11400000, guid: afc4d7fbfba8b0c41b6aebaf6a29acf6, type: 2}
 --- !u!1001 &2485475258638390093
 PrefabInstance:
   m_ObjectHideFlags: 0

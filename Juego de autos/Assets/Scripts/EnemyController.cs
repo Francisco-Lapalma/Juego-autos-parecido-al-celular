@@ -10,10 +10,17 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private GameObject rayCastOrigin;
     //[SerializeField] private float raycastRange = 15f;
     [SerializeField] protected EnemyData enemyStats;
+    bool hitOnce = false;
+
+
+    private void Awake()
+    {
+        PlayerCollision.OnDeath += GameOverBehaviour;
+    }
 
     void Start()
     {
-        
+        //FindObjectOfType<PlayerCollision>().OnDeath += GameOverBehaviour;
     }
 
     // Update is called once per frame
@@ -23,36 +30,9 @@ public class EnemyController : MonoBehaviour
         //DetectPlayer();
     }
 
-    private void DetectPlayer()
+    private void GameOverBehaviour()
     {
-        RaycastHit hit;
-        bool oneScore = false;
-        if (Physics.Raycast(rayCastOrigin.transform.position, Vector3.left, out hit, enemyStats.raycastRange))
-        {
-            if (CompareTag("Player"))
-            {
-                if (oneScore == false)
-                {
-                    GameManager.instance.score++;
-                    oneScore = true;
-                    Debug.Log("Sumo punto");
-                }
-
-            }
-        }
-
-        if (Physics.Raycast(rayCastOrigin.transform.position, Vector3.right, out hit, enemyStats.raycastRange))
-        {
-            if (CompareTag("Player"))
-            {   
-                if (oneScore == false)
-                {
-                    GameManager.instance.score++;
-                    oneScore = true;
-                    Debug.Log("Sumo punto");
-                }
-                
-            }
-        }
+        Debug.Log("Yo EnemyController recibi la notificacion hago mi parte y por cierto FFFFFFF");
+        this.enabled = false;
     }
 }

@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayCastOrigin: {fileID: 8654553251851450311}
-  enemyStats: {fileID: 11400000, guid: 094e9eff7266b414b9ab4e1f8e40cef2, type: 2}
+  enemyStats: {fileID: 11400000, guid: 46d3cf1aa56004344a925d31caf99839, type: 2}
 --- !u!1001 &4071386215001539226
 PrefabInstance:
   m_ObjectHideFlags: 0

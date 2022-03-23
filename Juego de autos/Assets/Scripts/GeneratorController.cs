@@ -8,29 +8,38 @@ public class GeneratorController : MonoBehaviour
     [SerializeField] private GameObject[] enemys;
 
 
-    
+    private void Awake()
+    {
+        PlayerCollision.OnDeath += DisableGenerator;
+    }
     void Start()
     {
         SpawnEnemy();
+        //PlayerCollision.OnDeath += DisableGenerator;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void SelectRandomEnemys()
     {
         int enemyIndex = Random.Range(0, enemys.Length);
         Instantiate(enemys[enemyIndex], transform.position, transform.rotation);
-        Destroy(GameObject.FindGameObjectWithTag("Enemy") , 15f);
+        Destroy(GameObject.FindGameObjectWithTag("Enemy"), 15f);
     }
 
     private void SpawnEnemy()
     {
-        float randomRate = Random.Range(2f , 10f);
-        float randomDelay = Random.Range(0f , 1f);
-        InvokeRepeating("SelectRandomEnemys" , randomDelay , randomRate);
+        float randomRate = Random.Range(2f, 10f);
+        float randomDelay = Random.Range(0f, 2f);
+        InvokeRepeating("SelectRandomEnemys", randomDelay, randomRate);
+    }
+
+    private void DisableGenerator()
+    {
+        Destroy(this);
     }
 }
