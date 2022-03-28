@@ -10,7 +10,7 @@ public class GeneratorController : MonoBehaviour
 
     private void Awake()
     {
-        PlayerCollision.OnDeath += DisableGenerator;
+
     }
     void Start()
     {
@@ -36,10 +36,5 @@ public class GeneratorController : MonoBehaviour
         float randomRate = Random.Range(2f, 10f);
         float randomDelay = Random.Range(0f, 2f);
         InvokeRepeating("SelectRandomEnemys", randomDelay, randomRate);
-    }
-
-    private void DisableGenerator()
-    {
-        Destroy(this);
     }
 }

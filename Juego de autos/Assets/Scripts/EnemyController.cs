@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour
 
     private void Awake()
     {
-        PlayerCollision.OnDeath += GameOverBehaviour;
+
     }
 
     void Start()
@@ -28,11 +28,5 @@ public class EnemyController : MonoBehaviour
     {
         transform.Translate(Vector3.forward * enemyStats.enemyspeed * Time.deltaTime);
         //DetectPlayer();
-    }
-
-    private void GameOverBehaviour()
-    {
-        Debug.Log("Yo EnemyController recibi la notificacion hago mi parte y por cierto FFFFFFF");
-        this.enabled = false;
     }
 }

@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        PlayerCollision.OnDeath += GameOverBehaviour;
+
     }
     void Start()
     {
@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
         //MovementPlayer1();
         MovementPlayer2();
         DetectEnemy();
+        UnloockJump();
     }
 
     private void MovementPlayer1()
@@ -102,11 +103,14 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawRay(rayCastOrigin.transform.position, rayCastOrigin.transform.TransformDirection(Vector3.left) * raycastRange);
     }
 
-    private void GameOverBehaviour()
+    private void UnloockJump()
     {
-        Debug.Log("Yo PlayerController recibi la notificacion hago mi parte y por cierto FFFFFFF");
-        GetComponent<Rigidbody>().isKinematic = true;
-        this.enabled = false;
-        //GetComponent<Rigidbody>().isKinematic = true;
+        if (GameManager.instance.score >= 5000)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                transform.Translate(Vector3.up * Time.deltaTime * 100f);
+            }
+        }
     }
 }
