@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         //MovementPlayer1();
         MovementPlayer2();
         DetectEnemy();
-        UnloockJump();
+        UnlockMovementUpDown();
     }
 
     private void MovementPlayer1()
@@ -103,13 +103,17 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawRay(rayCastOrigin.transform.position, rayCastOrigin.transform.TransformDirection(Vector3.left) * raycastRange);
     }
 
-    private void UnloockJump()
+    private void UnlockMovementUpDown()
     {
-        if (GameManager.instance.score >= 5000)
+        if (GameManager.instance.score >= 3000)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                transform.Translate(Vector3.up * Time.deltaTime * 100f);
+                transform.Translate(Vector3.forward * Time.deltaTime * playerStats.carSpeed);
+            }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                transform.Translate(Vector3.forward * Time.deltaTime * playerStats.carSpeed);
             }
         }
     }

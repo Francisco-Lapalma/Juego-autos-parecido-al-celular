@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class DecorationsController : MonoBehaviour
 {
-    [SerializeField] private float scrollFactor = -1f;
-    [SerializeField] private Vector3 gameVelocity;
-    Rigidbody rbDecorations;
+
+    private Vector3 startPos;
+    [SerializeField] private float decorationSpeed = 5f;
 
     private void Awake()
     {
-        rbDecorations = GetComponent<Rigidbody>();
-        rbDecorations.velocity = gameVelocity * scrollFactor;
+
     }
     void Start()
     {
-
+        startPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.z < startPos.z - 60)
+        {
+            transform.position = startPos;
+        }
 
+        transform.Translate(Vector3.back * Time.deltaTime * decorationSpeed);
     }
 
-    private void OnTriggerExit(Collider gameArea)
-    {
-        transform.position = Vector3.forward * (gameArea.bounds.size.z - GetComponent<BoxCollider>().size.z);
-    }
 }
