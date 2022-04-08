@@ -27,6 +27,5 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * enemyStats.enemyspeed * Time.deltaTime);
-        //DetectPlayer();
     }
 }

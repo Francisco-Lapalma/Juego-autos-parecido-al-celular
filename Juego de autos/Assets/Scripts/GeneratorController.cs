@@ -34,7 +34,7 @@ public class GeneratorController : MonoBehaviour
     private void SpawnEnemy()
     {
         float randomRate = Random.Range(2f, 10f);
-        float randomDelay = Random.Range(0f, 2f);
+        float randomDelay = Random.Range(2f, 4f);
         InvokeRepeating("SelectRandomEnemys", randomDelay, randomRate);
     }
 }

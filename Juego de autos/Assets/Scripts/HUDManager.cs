@@ -10,7 +10,10 @@ public class HUDManager : MonoBehaviour
 
     [SerializeField] private GameObject panelMenu;
     [SerializeField] private GameObject panelHowToPlay;
+    [SerializeField] private GameObject panelAgradecimientos;
     [SerializeField] private Text textScore;
+    
+    private int scoreCount;
 
     void Start()
     {
@@ -20,9 +23,8 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateScoreUI();
+        UpdateScoreUI(); 
     }
-
     //Main Menu Scene
     public void TouchPlay()
     {
@@ -40,6 +42,21 @@ public class HUDManager : MonoBehaviour
         panelMenu.SetActive(true);
         panelHowToPlay.SetActive(false);
     }
+    public void TouchHome2()
+    {
+        panelMenu.SetActive(true);
+        panelAgradecimientos.SetActive(false);
+    }
+    public void TouchAgradecimientos()
+    {
+        panelMenu.SetActive(false);
+        panelAgradecimientos.SetActive(true);
+    }
+
+    public void TouchQuit()
+    {
+        Application.Quit();
+    }
 
     //Playing Scene
     public void TouchHomeOnPlay()
@@ -49,7 +66,8 @@ public class HUDManager : MonoBehaviour
 
     private void UpdateScoreUI()
     {
-        int scoreCount = GameManager.instance.score;
+        scoreCount = GameManager.instance.score;
         textScore.text = ""+ scoreCount;
     }
+
 }

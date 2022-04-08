@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
         ///// si no toca ningun auto, el boolean cambia a falso 
         else hitOnce = false;
     }
-
+    /*
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawRay(rayCastOrigin.transform.position, rayCastOrigin.transform.TransformDirection(Vector3.left) * raycastRange);
     }
-
+    */
     private void UnlockMovementUpDown()
     {
         if (GameManager.instance.score >= 3000)
