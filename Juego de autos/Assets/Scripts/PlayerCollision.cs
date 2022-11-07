@@ -7,7 +7,9 @@ using System;
 public class PlayerCollision : MonoBehaviour
 { 
     // Start is called before the first frame update
-
+    private void Start() {
+        GameManager.instance.score = 0;
+    }
 
     private void OnCollisionEnter(Collision other)
     {
@@ -15,7 +17,6 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             SceneManager.LoadScene(sceneBuildIndex: 0);
-            GameManager.instance.score = 0;
         }
         /*
         if (other.gameObject.CompareTag("Ground"))

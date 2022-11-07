@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         //MovementPlayer1();
         MovementPlayer2();
-        DetectEnemy();
+        //DetectEnemy();
         UnlockMovementUpDown();
     }
 
@@ -38,11 +38,11 @@ public class PlayerController : MonoBehaviour
 
     private void MovementPlayer2()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             transform.Translate(Vector3.left * Time.deltaTime * playerStats.gyroSpeed);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             transform.Translate(Vector3.right * Time.deltaTime * playerStats.gyroSpeed);
         }

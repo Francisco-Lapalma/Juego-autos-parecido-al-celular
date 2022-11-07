@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abd3ee0012e92ba4893d312e7a78f62c, type: 3}
   m_Name: Enemy 7
   m_EditorClassIdentifier: 
-  enemyspeed: 7
+  enemyspeed: 6
   raycastRange: 15

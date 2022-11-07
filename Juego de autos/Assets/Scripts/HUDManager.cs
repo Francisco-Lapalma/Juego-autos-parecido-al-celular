@@ -12,18 +12,22 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameObject panelHowToPlay;
     [SerializeField] private GameObject panelAgradecimientos;
     [SerializeField] private Text textScore;
+    [SerializeField] private Text highScore;
     
     private int scoreCount;
 
     void Start()
     {
-        
+        highScore.text = PlayerPrefs.GetInt("Record", 0).ToString();
+        //scoreCount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateScoreUI(); 
+        //highScore.text = PlayerPrefs.GetInt("Record", 0).ToString();
+        UpdateHighScores();
     }
     //Main Menu Scene
     public void TouchPlay()
@@ -36,7 +40,6 @@ public class HUDManager : MonoBehaviour
         panelMenu.SetActive(false);
         panelHowToPlay.SetActive(true);
     }
-
     public void TouchHome()
     {
         panelMenu.SetActive(true);
@@ -56,6 +59,15 @@ public class HUDManager : MonoBehaviour
     public void TouchQuit()
     {
         Application.Quit();
+    }
+
+    public void UpdateHighScores()
+    {
+        if (scoreCount > PlayerPrefs.GetInt("Record", 0))
+        {
+            PlayerPrefs.SetInt("Record", scoreCount);
+            highScore.text = scoreCount.ToString();
+        }
     }
 
     //Playing Scene
